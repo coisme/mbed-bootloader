@@ -53,7 +53,10 @@
         "MBED_CLOUD_CLIENT_UPDATE_STORAGE=ARM_UCP_FLASHIAP",
         "MBED_BOOTLOADER_SIZE=APPLICATION_SIZE",
         "MBED_BOOTLOADER_ACTIVE_HEADER_REGION_SIZE=1024",
-        "FLASH_BANK_SIZE=MBED_ROM_SIZE/2"
+        "FLASH_BANK_SIZE=MBED_ROM_SIZE/2",
+        "UNO_91H_ACTIVE_APP_SIZE=0xCFC00",
+        "UNO_91H_KVSTORE_START_ADDRESS=0x18100000",
+        "UNO_91H_CANDIDATE_APP_SIZE=0xD0000"
     ],
     "target_overrides": {
         "*": {
@@ -92,7 +95,10 @@
             "kvstore-size": "2*64*1024",
             "update-client.storage-page": 1,
             "target.components_add": ["FLASH_IAP"],
-            "target.device_name": "RDA5981X"
+            "target.device_name": "RDA5981X",
+            "mbed-bootloader.max-application-size"     : "(UNO_91H_ACTIVE_APP_SIZE)",
+            "update-client.storage-address"            : "(UNO_91H_KVSTORE_START_ADDRESS + KVSTORE_SIZE)",
+            "update-client.storage-size"               : "(UNO_91H_CANDIDATE_APP_SIZE)"
         }
     }
 }
